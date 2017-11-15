@@ -1,0 +1,24 @@
+@font-face {
+  font-family: Dense;
+  src: url("../fonts/dense.otf"); }
+
+body, header, h1, input, button, div, ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; }
+
+header, div, ul, a {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+body {
+  min-height: 100vh;
+  background-color: #21252b; }
+
+button:hover, a:hover {
+  cursor: pointer; }
+
+.hide {
+  display: none; }

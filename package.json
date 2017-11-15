@@ -1,0 +1,49 @@
+{
+  "name": "soundtracks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/start.js",
+  "scripts": {
+    "start": "npm run server & webpack --watch",
+    "dev": "npm run sass & npm run server & webpack-dev-server",
+    "server": "nodemon --ignore app/ server/start.js",
+    "sass": "./node_modules/.bin/node-sass ./public/sass/main.scss ./public/style.css"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JWLD/soundtracks-react.git"
+  },
+  "author": "Jack Davies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JWLD/soundtracks-react/issues"
+  },
+  "homepage": "https://github.com/JWLD/soundtracks-react#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "node-sass": "^4.6.1",
+    "pg": "^6.4.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
