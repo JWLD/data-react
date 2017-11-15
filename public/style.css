@@ -17,8 +17,16 @@ body {
   min-height: 100vh;
   background-color: #21252b; }
 
-button:hover, a:hover {
+button:hover, a:hover, svg:hover {
   cursor: pointer; }
 
 .hide {
   display: none; }
+
+.spotify-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 16px;
+  color: white;
+  font-size: 70px; }

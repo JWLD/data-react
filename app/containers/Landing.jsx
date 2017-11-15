@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Spotify from '../components/Spotify';
+
 const Landing = () => (
-  <h1>Hello World</h1>
+  <Spotify />
 );
 
 export default Landing;

@@ -1,3 +1,10 @@
-const router = require('express').Router();
+const Router = require('express').Router();
 
-module.exports = router;
+// controllers
+const spotifyController = require('./spotify');
+
+// SPOTIFY
+Router.get('/login', spotifyController.login);
+Router.get('/redirect', spotifyController.redirect);
+
+module.exports = Router;
