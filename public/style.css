@@ -1,14 +1,10 @@
-@font-face {
-  font-family: Dense;
-  src: url("../fonts/dense.otf"); }
-
-body, header, h1, input, button, div, ul {
+a, body, button, div, h1, header, input, ul {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box; }
 
-header, div, ul, a {
+a, div, header, ul {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -17,16 +13,30 @@ body {
   min-height: 100vh;
   background-color: #21252b; }
 
-button:hover, a:hover, svg:hover {
+a:hover, button:hover, svg:hover {
   cursor: pointer; }
 
 .hide {
   display: none; }
 
-.spotify-btn {
+.header-bar {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  background-color: #373e48;
+  border-bottom: 5px solid white; }
+
+.header-bar__title {
+  font: bold 50px Helvetica;
+  color: white; }
+
+.header-bar__spotify-btn {
+  position: absolute;
+  top: 0;
   right: 0;
-  margin: 16px;
+  height: 95px;
+  margin-right: 18px;
   color: white;
-  font-size: 70px; }
+  font-size: 60px; }

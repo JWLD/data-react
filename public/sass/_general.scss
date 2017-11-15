@@ -1,6 +1,6 @@
 // SIZE RESET
 
-body, header, h1, input, button, div, ul {
+a, body, button, div, h1, header, input, ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -9,7 +9,7 @@ body, header, h1, input, button, div, ul {
 
 // FLEX
 
-header, div, ul, a {
+a, div, header, ul {
   @include flex;
 }
 
@@ -20,7 +20,7 @@ body {
   background-color: #21252b;
 }
 
-button:hover, a:hover, svg:hover {
+a:hover, button:hover, svg:hover {
   cursor: pointer;
 }
 
