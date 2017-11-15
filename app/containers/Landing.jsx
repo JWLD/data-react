@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Header from '../components/Header';
+
 const Landing = () => (
-  <h1>Hello World</h1>
+  <Header />
 );
 
 export default Landing;
