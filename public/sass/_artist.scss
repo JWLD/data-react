@@ -5,12 +5,8 @@ $boxSize: 250px;
   flex-direction: column;
 }
 
-.artist-sctn form {
-  width: ($boxSize * 3) + ($sFull * 2);
-}
-
 .artist-sctn input {
-  width: 100%;
+  width: ($boxSize * 3) + ($sFull * 2);
   height: 48px;
   border-radius: 3px;
   padding: 12px;
@@ -24,14 +20,39 @@ $boxSize: 250px;
 }
 
 .artist-sctn__box {
+  flex-direction: column;
   position: relative;
-  height: $boxSize;
   width: $boxSize;
+  padding: 8px;
   border-radius: 3px;
   background-color: $cLight;
 }
 
-.artist-sctn__box:hover {
+.artist-sctn__box:not(.selected):hover {
   cursor: pointer;
   background-color: $cLighter;
+}
+
+.selected {
+  background-color: white;
+
+  span {
+    color: black !important;
+  }
+}
+
+.artist-sctn__box div {
+  width: $boxSize - 16px;
+  height: $boxSize - 16px;
+  border-radius: 3px;
+  background-color: $cMain;
+  background-size: cover;
+  background-position: center;
+}
+
+.artist-sctn__box span {
+  width: 100%;
+  padding: 12px 0 4px 0;
+  font: 15px $fMain;
+  color: white;
 }

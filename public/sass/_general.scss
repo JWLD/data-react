@@ -1,6 +1,6 @@
 // SIZE RESET
 
-a, body, button, div, h1, header, input, section, ul {
+a, body, button, div, h1, header, input, section, span, ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -10,7 +10,7 @@ a, body, button, div, h1, header, input, section, ul {
 
 // FLEX
 
-a, div, form, header, section, ul {
+a, button, div, form, header, section, span, ul {
   @include flex;
 }
 

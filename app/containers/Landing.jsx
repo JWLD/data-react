@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../components/Header';
-import ArtistSearch from '../components/ArtistSearch';
+import ArtistSearch from './ArtistSearch';
 
 const Landing = () => (
   <div className="app">
