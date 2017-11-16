@@ -39,11 +39,13 @@ class ArtistSearch extends Component {
     }
   }
 
-  clickOnArtist(id, name) {
-    this.props.selectArtist(id); // update redux
+  clickOnArtist(artist) {
+    this.props.selectArtist(artist.id); // update redux
 
     // attempt to add artist to DB
-    Axios.post('http://localhost:3000/db-artists', { id, name })
+    const imageUrl = artist.images[1] ? artist.images[1].url : null;
+
+    Axios.post('http://localhost:3000/db-artists', { id: artist.id, name: artist.name, img: imageUrl })
       .then((response) => {
         if (response.data.error) return console.log(response.data.error.message);
 
@@ -66,13 +68,13 @@ class ArtistSearch extends Component {
       const artist = this.state.artists[i];
 
       if (artist) {
-        const url = artist.images[0] ? artist.images[0].url : null;
+        const url = artist.images[1] ? artist.images[1].url : null;
         const boxClass = artist.id === this.props.artist ? 'artist-sctn__box selected' : 'artist-sctn__box';
         const photoStyle = { backgroundImage: `url(${url})` };
         const name = artist.name.slice(0, 25);
 
         artists[i] = (
-          <button className={boxClass} key={i} onClick={() => this.clickOnArtist(artist.id, artist.name)}>
+          <button className={boxClass} key={i} onClick={() => this.clickOnArtist(artist)}>
             <div style={photoStyle}></div>
             <span>{name}</span>
           </button>
