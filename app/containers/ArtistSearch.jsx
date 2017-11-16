@@ -46,7 +46,7 @@ class ArtistSearch extends Component {
       const artist = this.state.artists[i];
 
       if (artist) {
-        const url = artist.images[1] ? artist.images[1].url : null;
+        const url = artist.images[0] ? artist.images[0].url : null;
         const boxClass = artist.id === this.props.artist ? 'artist-sctn__box selected' : 'artist-sctn__box';
         const photoStyle = { backgroundImage: `url(${url})` };
         const name = artist.name.slice(0, 25);
