@@ -4,7 +4,7 @@ const Request = require('request');
 
 const authController = module.exports = {};
 
-// LOGIN ROUTE - REDIRECT TO SPOTIFY AUTH PAGE
+// GET LOGIN - REDIRECT TO SPOTIFY AUTH PAGE
 authController.login = (req, res) => {
   const queries = Querystring.stringify({
     client_id: process.env.SPOTIFY_ID,
@@ -15,7 +15,7 @@ authController.login = (req, res) => {
   return res.redirect(`https://accounts.spotify.com/authorize?${queries}`);
 };
 
-// REDIRECT ROUTE - POST REQUEST TO SPOTIFY FOR ACCESS TOKEN
+// GET REDIRECT - POST REQUEST TO SPOTIFY FOR ACCESS TOKEN
 authController.redirect = (req, res) => {
   const data = {
     grant_type: 'authorization_code',

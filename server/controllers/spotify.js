@@ -3,7 +3,7 @@ const Request = require('request');
 
 const spotifyController = module.exports = {};
 
-// ARTISTS ROUTE - SEARCH SPOTIFY FOR ARTISTS
+// GET ARTISTS - SEARCH SPOTIFY FOR ARTISTS
 spotifyController.artists = (req, res) => {
   // extract access token
   if (!req.cookies.jwt) return res.status(401).send('Missing access token');
