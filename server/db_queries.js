@@ -10,8 +10,8 @@ dbQueries.checkForArtist = (connPool, id, callback) => {
 
 dbQueries.addArtist = (connPool, data, callback) => {
   connPool.query(
-    'INSERT INTO artists (name, spotify_id) VALUES ($1, $2)',
-    [data.name, data.id],
+    'INSERT INTO artists (name, spotify_id, spotify_img) VALUES ($1, $2, $3)',
+    [data.name, data.id, data.img],
     callback
   );
 };
