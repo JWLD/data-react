@@ -27,6 +27,8 @@
   "homepage": "https://github.com/JWLD/soundtracks-react#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "jsonwebtoken": "^8.1.0",
@@ -37,7 +39,8 @@
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.1"
+    "redux": "^3.7.1",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
