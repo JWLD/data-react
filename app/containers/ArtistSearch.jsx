@@ -9,7 +9,7 @@ class ArtistSearch extends Component {
     super(props);
 
     this.state = {
-      searchTerm: '',
+      searchTerm: 'Hans Zimmer',
       artists: [],
       selectedArtist: null
     };
