@@ -27,12 +27,13 @@ button:focus {
   flex-direction: column; }
 
 .main {
+  flex-direction: column;
   width: 100vw;
   padding: 30px; }
 
 section {
-  width: 100vw;
-  margin: 30px; }
+  margin: 30px;
+  flex-direction: column; }
 
 .header-bar {
   position: relative;
@@ -53,9 +54,6 @@ section {
   margin-right: 18px;
   color: white;
   font-size: 60px; }
-
-.artist-sctn {
-  flex-direction: column; }
 
 .artist-sctn input {
   width: 810px;

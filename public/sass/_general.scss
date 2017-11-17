@@ -42,11 +42,12 @@ button:focus {
 }
 
 .main {
+  flex-direction: column;
   width: 100vw;
   padding: $sFull;
 }
 
 section {
-  width: 100vw;
   margin: $sFull;
+  flex-direction: column;
 }

@@ -1,10 +1,6 @@
 // VARS
 $boxSize: 250px;
 
-.artist-sctn {
-  flex-direction: column;
-}
-
 .artist-sctn input {
   width: ($boxSize * 3) + ($sFull * 2);
   height: 48px;
