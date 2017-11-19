@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Axios from 'axios';
 import FaDownload from 'react-icons/lib/fa/download';
 import FaExternalLinkSquare from 'react-icons/lib/fa/external-link-square';
@@ -16,6 +17,7 @@ class AlbumTile extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.getAlbumDate = this.getAlbumDate.bind(this);
+    this.addAlbum = this.addAlbum.bind(this);
   }
 
   trimTitles(title) {
@@ -40,6 +42,30 @@ class AlbumTile extends Component {
       });
   }
 
+  addAlbum() {
+    const data = {
+      name: this.state.title,
+      year: this.state.year,
+      spotify_id: this.props.id,
+      spotify_img: this.props.albumArt,
+      artist_id: this.props.artist
+    }
+
+    Axios.post('http://localhost:3000/db-albums', data)
+      .then((response) => {
+        if (response.data.error) return console.log(response.data.error.message);
+
+        if (response.status === 201) {
+          return console.log('Album added to DB:', response);
+        } else {
+          return console.log(response.data);
+        }
+      })
+      .catch((err) => {
+        return err.response ? console.log(err.response.data) : console.log(err);
+      });
+  }
+
   render () {
     let yearButton;
 
@@ -50,13 +76,16 @@ class AlbumTile extends Component {
       yearButton = <a><FaDownload onClick={this.getAlbumDate} /></a>;
     }
 
+    const imgStyle = { backgroundImage: `url(${this.props.albumArt})` };
+
     return (
       <li>
         <div className="album">
           <a
             className="album__img"
-            style={this.props.imgStyle}
-            href={this.props.external_urls.spotify}>
+            style={imgStyle}
+            href={this.props.external_urls.spotify}
+            target="_blank">
           </a>
           <div className="album__input-wrap">
             <input name="title" onChange={this.onInputChange} value={this.state.title} />
@@ -65,8 +94,8 @@ class AlbumTile extends Component {
               {yearButton}
             </div>
             <div className="album__button-wrap">
-              <button>ADD</button>
-              <button>IGNORE</button>
+              <button onClick={this.addAlbum}>ADD</button>
+              <button>-</button>
             </div>
           </div>
         </div>
@@ -75,4 +104,8 @@ class AlbumTile extends Component {
   }
 };
 
-export default AlbumTile;
+const mapStateToProps = (state) => ({
+  artist: state.artist
+});
+
+export default connect(mapStateToProps)(AlbumTile);

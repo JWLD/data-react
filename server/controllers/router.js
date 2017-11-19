@@ -16,5 +16,6 @@ Router.get('/album-date', spotifyController.albumDate);
 
 // DATABASE
 Router.post('/db-artists', dbController.checkForArtist, dbController.addArtist);
+Router.post('/db-albums', dbController.addAlbum);
 
 module.exports = Router;

@@ -25,3 +25,12 @@ dbController.addArtist = (req, res) => {
     return res.status(201).send(result);
   });
 };
+
+// POST DB-ALBUMS - ADD NEW ALBUM TO DB
+dbController.addAlbum = (req, res) => {
+  dbQueries.addAlbum(connPool, req.body, (err, result) => {
+    if (err) return res.status(500).send(`Error adding album to DB: ${err}`);
+
+    return res.status(201).send(result);
+  });
+};

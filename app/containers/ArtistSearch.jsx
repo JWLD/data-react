@@ -56,7 +56,7 @@ class ArtistSearch extends Component {
         }
       })
       .catch((err) => {
-        return console.log(err.response.data);
+        return err.response ? console.log(err.response.data) : console.log(err);
       });
   }
 

@@ -5,5 +5,6 @@ module.exports = [
   'original television soundtrack',
   'original soundtrack',
   'OST',
-  'original motion picture score'
+  'original motion picture score',
+  'soundtrack'
 ];
