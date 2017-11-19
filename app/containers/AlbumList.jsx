@@ -19,8 +19,6 @@ class AlbumList extends Component {
       .then((response) => {
         if (response.data.error) return console.log(response.data.error.message);
 
-        console.log(response.data.items);
-
         this.setState({
           currentArtist: this.props.artist,
           albums: response.data.items
