@@ -12,6 +12,7 @@ Router.get('/redirect', authController.redirect);
 // SPOTIFY
 Router.get('/artists', spotifyController.artists);
 Router.get('/albums', spotifyController.albums);
+Router.get('/album-date', spotifyController.albumDate);
 
 // DATABASE
 Router.post('/db-artists', dbController.checkForArtist, dbController.addArtist);

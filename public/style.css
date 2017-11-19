@@ -138,19 +138,20 @@ section {
     font: 16px Helvetica;
     margin-bottom: 15px; }
 
-.album__year-wrap svg {
+.album__year-wrap a {
   position: absolute;
   top: 0;
-  right: 0;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 3px;
-  height: 30px;
-  width: 30px;
-  background-color: gray;
-  color: white; }
-  .album__year-wrap svg:hover {
-    color: goldenrod; }
+  right: 0; }
+  .album__year-wrap a svg {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    background-color: gray;
+    color: white; }
+    .album__year-wrap a svg:hover {
+      color: goldenrod; }
 
 .album__button-wrap {
   width: 100%;
