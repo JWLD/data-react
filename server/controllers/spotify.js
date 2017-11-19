@@ -1,14 +1,9 @@
-const JsonWebToken = require('jsonwebtoken');
 const Request = require('request');
 
 const spotifyController = module.exports = {};
 
 // GET ARTISTS - SEARCH SPOTIFY FOR ARTISTS
 spotifyController.artists = (req, res) => {
-  // extract access token
-  if (!req.cookies.jwt) return res.status(401).send('Missing access token');
-  const decoded = JsonWebToken.verify(req.cookies.jwt, process.env.SECRET);
-
   const options = {
     method: 'GET',
     url: `https://api.spotify.com/v1/search?type=artist&limit=3&q=${req.query.q}`,
@@ -26,10 +21,6 @@ spotifyController.artists = (req, res) => {
 
 // GET ALBUMS - SEARCH SPOTIFY FOR ALBUMS
 spotifyController.albums = (req, res) => {
-  // extract access token
-  if (!req.cookies.jwt) return res.status(401).send('Missing access token');
-  const decoded = JsonWebToken.verify(req.cookies.jwt, process.env.SECRET);
-
   const options = {
     method: 'GET',
     url: `https://api.spotify.com/v1/artists/${req.query.artistId}/albums?limit=50`,
@@ -47,15 +38,11 @@ spotifyController.albums = (req, res) => {
 
 // GET ALBUM-DATE - GET ALBUM YEAR FROM SPOTIFY
 spotifyController.albumDate = (req, res) => {
-  // extract access token
-  if (!req.cookies.jwt) return res.status(401).send('Missing access token');
-  const decoded = JsonWebToken.verify(req.cookies.jwt, process.env.SECRET);
-
   const options = {
     method: 'GET',
     url: `https://api.spotify.com/v1/albums/${req.query.albumId}`,
     headers: {
-      Authorization: `Bearer ${decoded.access_token}`
+      Authorization: `Bearer ${res.locals.token}`
     }
   };
 
