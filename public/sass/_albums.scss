@@ -34,6 +34,11 @@ $sAlbumImg: 250px - ($tilePadding * 2);
   height: $sAlbumImg;
   width: $sAlbumImg * 1.3;
 
+  div {
+    position: relative;
+    width: 100%;
+  }
+
   input {
     width: 100%;
     height: 40px;
@@ -42,6 +47,23 @@ $sAlbumImg: 250px - ($tilePadding * 2);
     background-color: $cWhite;
     font: 16px $fMain;
     margin-bottom: $tilePadding;
+  }
+}
+
+.album__year-wrap svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  height: 30px;
+  width: 30px;
+  background-color: gray;
+  color: white;
+
+  &:hover {
+    color: $cHover;
   }
 }
 
@@ -61,6 +83,10 @@ $sAlbumImg: 250px - ($tilePadding * 2);
 
     &:first-child {
       margin-right: $tilePadding;
+    }
+
+    &:hover {
+      color: $cHover;
     }
   }
 }

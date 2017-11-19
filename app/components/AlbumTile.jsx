@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FaDownload from 'react-icons/lib/fa/download';
 
 import titleData from '../data/titlePhrases';
 
@@ -8,7 +9,7 @@ class AlbumTile extends Component {
 
     this.state = {
       title: this.trimTitles(this.props.name),
-      year: this.props.name
+      year: this.props.year
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -37,7 +38,10 @@ class AlbumTile extends Component {
           </a>
           <div className="album__input-wrap">
             <input name="title" onChange={this.onInputChange} value={this.state.title} />
-            <input name="year" onChange={this.onInputChange} value={this.state.year} />
+            <div className="album__year-wrap">
+              <input name="year" onChange={this.onInputChange} value={this.state.year} />
+              <FaDownload />
+            </div>
             <div className="album__button-wrap">
               <button>ADD</button>
               <button>IGNORE</button>
