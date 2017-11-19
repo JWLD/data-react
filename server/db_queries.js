@@ -18,8 +18,8 @@ dbQueries.addArtist = (connPool, data, callback) => {
 
 dbQueries.addAlbum = (connPool, data, callback) => {
   connPool.query(
-    'INSERT INTO albums (name, year, spotify_id, spotify_img, artist_id) VALUES ($1, $2, $3, $4, $5)',
-    [data.name, data.year, data.spotify_id, data.spotify_img, data.artist_id],
+    'INSERT INTO albums (title, year, spotify_id, spotify_img, artist_id) VALUES ($1, $2, $3, $4, $5)',
+    [data.title, data.year, data.spotify_id, data.spotify_img, data.artist_id],
     callback
   );
 };

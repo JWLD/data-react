@@ -11,7 +11,7 @@ class AlbumTile extends Component {
     super(props);
 
     this.state = {
-      title: this.trimTitles(this.props.name),
+      title: this.trimTitles(props.name),
       year: ''
     };
 
@@ -44,7 +44,7 @@ class AlbumTile extends Component {
 
   addAlbum() {
     const data = {
-      name: this.state.title,
+      title: this.state.title,
       year: this.state.year,
       spotify_id: this.props.id,
       spotify_img: this.props.albumArt,
