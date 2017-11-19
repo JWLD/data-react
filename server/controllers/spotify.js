@@ -8,7 +8,7 @@ spotifyController.artists = (req, res) => {
     method: 'GET',
     url: `https://api.spotify.com/v1/search?type=artist&limit=3&q=${req.query.q}`,
     headers: {
-      Authorization: `Bearer ${decoded.access_token}`
+      Authorization: `Bearer ${res.locals.token}`
     }
   };
 
@@ -25,7 +25,7 @@ spotifyController.albums = (req, res) => {
     method: 'GET',
     url: `https://api.spotify.com/v1/artists/${req.query.artistId}/albums?limit=50`,
     headers: {
-      Authorization: `Bearer ${decoded.access_token}`
+      Authorization: `Bearer ${res.locals.token}`
     }
   };
 
