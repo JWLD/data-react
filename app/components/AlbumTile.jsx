@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 
+import titleData from '../data/titlePhrases';
+
 class AlbumTile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: this.props.name,
-      year: ''
+      title: this.trimTitles(this.props.name),
+      year: this.props.name
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  trimTitles(title) {
+    const regexArray = titleData.map(phrase => `:?-? \\(?${phrase}\\)?`);
+    const regex = new RegExp(regexArray.join('|'), 'gi');
+    return title.replace(regex, '');
   }
 
   onInputChange(e) {
