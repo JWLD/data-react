@@ -8,6 +8,7 @@ $boxSize: 250px;
   padding: 12px;
   font: 20px $fMain;
   margin-bottom: $sFull;
+  background-color: $cWhite;
 }
 
 .artist-sctn__box-wrap {
@@ -30,7 +31,7 @@ $boxSize: 250px;
 }
 
 .selected {
-  background-color: white;
+  background-color: $cWhite;
 
   span {
     color: black !important;
@@ -50,5 +51,5 @@ $boxSize: 250px;
   width: 100%;
   padding: 12px 0 4px 0;
   font: 15px $fMain;
-  color: white;
+  color: $cWhite;
 }
