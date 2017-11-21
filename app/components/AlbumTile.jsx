@@ -12,7 +12,8 @@ class AlbumTile extends Component {
 
     this.state = {
       title: this.trimTitles(props.name),
-      year: ''
+      year: '',
+			added: this.props.added
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -53,6 +54,8 @@ class AlbumTile extends Component {
       .then((response) => {
         if (response.data.error) return console.log(response.data.error.message);
 
+				this.setState({ added: true });
+				
         return console.log(response.data);
       })
       .catch((err) => {
@@ -71,10 +74,11 @@ class AlbumTile extends Component {
     }
 
     const imgStyle = { backgroundImage: `url(${this.props.albumArt})` };
+		const tileClass = this.state.added ? 'album added' : 'album';
 
     return (
       <li>
-        <div className="album">
+        <div className={tileClass}>
           <a
             className="album__img"
             style={imgStyle}

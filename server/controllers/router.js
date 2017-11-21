@@ -2,6 +2,7 @@ const Router = require('express').Router();
 
 // middleware
 const spotifyAuth = require('../middleware/spotifyAuth');
+const getAlbumIds = require('../middleware/getAlbumIds');
 
 // controllers
 const authController = require('./auth');
@@ -14,7 +15,7 @@ Router.get('/redirect', authController.redirect);
 
 // SPOTIFY
 Router.get('/artists', spotifyAuth, spotifyController.artists);
-Router.get('/albums', spotifyAuth, spotifyController.albums);
+Router.get('/albums', spotifyAuth, getAlbumIds, spotifyController.albums);
 Router.get('/album-date', spotifyAuth, spotifyController.albumDate);
 
 // DATABASE

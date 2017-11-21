@@ -10,7 +10,8 @@ class AlbumList extends Component {
 
     this.state = {
       currentArtist: '',
-      albums: []
+      albums: [],
+			dbAlbums: []
     };
   }
 
@@ -21,7 +22,8 @@ class AlbumList extends Component {
 
         this.setState({
           currentArtist: this.props.artist,
-          albums: response.data.items
+          albums: JSON.parse(response.data.allAlbums).items,
+					dbAlbums: response.data.dbAlbums
         });
       })
       .catch((err) => {
@@ -38,7 +40,10 @@ class AlbumList extends Component {
     const albums = this.state.albums.map((album) => {
       const imgUrl = album.images[1] ? album.images[1].url : null;
 
-      return <AlbumTile key={album.id} {...album} albumArt={imgUrl} />;
+			const added = this.state.dbAlbums.indexOf(album.id) !== -1;
+			console.log(added);
+
+      return <AlbumTile key={album.id} {...album} albumArt={imgUrl} added={added} />;
     });
 
     return (

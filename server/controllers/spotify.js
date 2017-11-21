@@ -32,7 +32,10 @@ spotifyController.albums = (req, res) => {
   Request(options, (error, response, body) => {
     if (error) return res.status(500).send(`Error searching Spotify for artists: ${error}`);
 
-    return res.send(body);
+    return res.send({
+			dbAlbums: res.locals.albumIds, // ids of albums already in DB
+			allAlbums: body
+		});
   });
 };
 
