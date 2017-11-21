@@ -27,9 +27,7 @@ class AlbumTile extends Component {
   }
 
   onInputChange(e) {
-    const toUpdate = {};
-    toUpdate[e.target.name] = e.target.value;
-    this.setState(toUpdate);
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   getAlbumDate() {
@@ -46,7 +44,7 @@ class AlbumTile extends Component {
     const data = {
       title: this.state.title,
       year: this.state.year,
-      spotify_id: this.props.id,
+      album_id: this.props.id,
       spotify_img: this.props.albumArt,
       artist_id: this.props.artist
     }
@@ -55,11 +53,7 @@ class AlbumTile extends Component {
       .then((response) => {
         if (response.data.error) return console.log(response.data.error.message);
 
-        if (response.status === 201) {
-          return console.log('Album added to DB:', response);
-        } else {
-          return console.log(response.data);
-        }
+        return console.log(response.data);
       })
       .catch((err) => {
         return err.response ? console.log(err.response.data) : console.log(err);

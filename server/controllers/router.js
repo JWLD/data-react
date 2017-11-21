@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 
 // middleware
-const checkToken = require('../middleware/check_token');
+const checkToken = require('../middleware/checkToken');
 
 // controllers
 const authController = require('./auth');
