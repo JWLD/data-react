@@ -46,6 +46,14 @@ dbQueries.addAlbumArtist = (connPool, data, callback) => {
 	);
 };
 
+dbQueries.checkAlbumArtist = (connPool, data, callback) => {
+	connPool.query(
+		'SELECT EXISTS(SELECT 1 FROM albums_artists WHERE artist_id = $1 AND album_id = $2)',
+		[data.artist_id, data.album_id],
+		callback
+	);
+};
+
 dbQueries.getAlbumIds = (connPool, artistId, callback) => {
 	connPool.query(
 		'SELECT spotify_id FROM albums WHERE spotify_id IN (SELECT album_id FROM albums_artists WHERE artist_id = $1)',

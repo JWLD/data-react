@@ -19,7 +19,18 @@ checkExists.album = (req, res, next) => {
     if (err) return res.status(500).send(`Error checking DB for album: ${err}`);
 
     // exit early if album already exists
-    if (result.rows[0].exists) return res.send('Album already exists in DB');
+    if (result.rows[0].exists) return res.send('Album exists but new artist linked in DB');
+
+    next();
+  });
+};
+
+checkExists.albumArtist = (req, res, next) => {
+	dbQueries.checkAlbumArtist(connPool, req.body, (err, result) => {
+    if (err) return res.status(500).send(`Error checking DB for album-artist: ${err}`);
+
+    // exit early if album-artist already exists
+    if (result.rows[0].exists) return res.send('Album exists and artist already linked in DB');
 
     next();
   });

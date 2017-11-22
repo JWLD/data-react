@@ -9,7 +9,7 @@ dbController.addArtist = (req, res) => {
   dbQueries.addArtist(connPool, req.body, (err, result) => {
     if (err) return res.status(500).send(`Error adding artist to DB: ${err}`);
 
-    return res.status(201).send('Artist added to DB');
+    return res.status(201).send('New artist added to DB');
   });
 };
 
@@ -35,6 +35,6 @@ dbController.addAlbum = (req, res) => {
 	], (err, result) => {
 		if (err) return res.status(500).send(`Error adding album to DB: ${err}`);
 
-		return res.status(201).send('Album added to DB');
+		return res.status(201).send('New album added to DB');
 	});
 };
