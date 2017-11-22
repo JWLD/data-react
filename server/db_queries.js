@@ -1,5 +1,7 @@
 const dbQueries = {};
 
+// ARTISTS
+
 dbQueries.addArtist = (connPool, data, callback) => {
   connPool.query(
     'INSERT INTO artists (name, spotify_id, spotify_img) VALUES ($1, $2, $3)',
@@ -8,6 +10,16 @@ dbQueries.addArtist = (connPool, data, callback) => {
   );
 };
 
+dbQueries.checkArtist = (connPool, id, callback) => {
+  connPool.query(
+    'SELECT EXISTS(SELECT 1 FROM artists WHERE spotify_id = $1)',
+    [id],
+    callback
+  );
+};
+
+// ALBUMS
+
 dbQueries.addAlbum = (connPool, data, callback) => {
   connPool.query(
     'INSERT INTO albums (title, year, spotify_id, spotify_img) VALUES ($1, $2, $3, $4)',
@@ -15,6 +27,8 @@ dbQueries.addAlbum = (connPool, data, callback) => {
     callback
   );
 };
+
+// ALBUMS-ARTISTS
 
 dbQueries.addAlbumArtist = (connPool, data, callback) => {
 	connPool.query(
