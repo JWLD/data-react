@@ -28,6 +28,14 @@ dbQueries.addAlbum = (connPool, data, callback) => {
   );
 };
 
+dbQueries.checkAlbum = (connPool, id, callback) => {
+	connPool.query(
+		'SELECT EXISTS(SELECT 1 FROM albums WHERE spotify_id = $1)',
+		[id],
+		callback
+	);
+};
+
 // ALBUMS-ARTISTS
 
 dbQueries.addAlbumArtist = (connPool, data, callback) => {
