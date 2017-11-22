@@ -1,7 +1,7 @@
 {
   "name": "soundtracks",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easily view a composer's main body of work",
   "main": "server/start.js",
   "scripts": {
     "start": "npm run server & webpack --watch",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/JWLD/soundtracks-react#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
@@ -48,6 +49,6 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.9.4"
   }
 }

@@ -1,4 +1,4 @@
-a, body, button, div, h1, header, input, section, span, ul {
+a, body, button, div, h1, header, input, section, span, svg, ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -27,12 +27,13 @@ button:focus {
   flex-direction: column; }
 
 .main {
+  flex-direction: column;
   width: 100vw;
   padding: 30px; }
 
 section {
-  width: 100vw;
-  margin: 30px; }
+  margin: 30px;
+  flex-direction: column; }
 
 .header-bar {
   position: relative;
@@ -54,16 +55,14 @@ section {
   color: white;
   font-size: 60px; }
 
-.artist-sctn {
-  flex-direction: column; }
-
 .artist-sctn input {
   width: 810px;
   height: 48px;
   border-radius: 3px;
   padding: 12px;
   font: 20px Helvetica;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  background-color: #eee; }
 
 .artist-sctn__box-wrap {
   width: 810px;
@@ -82,7 +81,7 @@ section {
   background-color: #434b56; }
 
 .selected {
-  background-color: white; }
+  background-color: #eee; }
   .selected span {
     color: black !important; }
 
@@ -98,4 +97,77 @@ section {
   width: 100%;
   padding: 12px 0 4px 0;
   font: 15px Helvetica;
-  color: white; }
+  color: #eee; }
+
+.album-sctn {
+  margin: 15px; }
+  .album-sctn ul {
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap; }
+
+.album {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #373e48; }
+  .album.added {
+    background-color: seagreen; }
+
+.album__img {
+  height: 220px;
+  width: 220px;
+  margin-right: 15px;
+  border-radius: 3px;
+  background-color: #21252b;
+  background-size: cover;
+  background-position: center; }
+
+.album__input-wrap {
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 220px;
+  width: 286px; }
+  .album__input-wrap div {
+    position: relative;
+    width: 100%; }
+  .album__input-wrap input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: #eee;
+    font: 16px Helvetica;
+    margin-bottom: 15px; }
+
+.album__year-wrap a {
+  position: absolute;
+  top: 0;
+  right: 0; }
+  .album__year-wrap a svg {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    background-color: gray;
+    color: white; }
+    .album__year-wrap a svg:hover {
+      color: goldenrod; }
+
+.album__button-wrap {
+  width: 100%;
+  justify-content: space-between; }
+  .album__button-wrap button {
+    height: 40px;
+    padding-top: 2px;
+    flex-grow: 1;
+    flex-basis: 0;
+    border-radius: 2px;
+    background-color: gray;
+    color: #eee;
+    font: bold 20px Helvetica; }
+    .album__button-wrap button:first-child {
+      margin-right: 15px; }
+    .album__button-wrap button:hover {
+      color: goldenrod; }

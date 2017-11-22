@@ -9,7 +9,7 @@ class ArtistSearch extends Component {
     super(props);
 
     this.state = {
-      searchTerm: '',
+      searchTerm: 'Hans Zimmer',
       artists: [],
       selectedArtist: null
     };
@@ -49,14 +49,10 @@ class ArtistSearch extends Component {
       .then((response) => {
         if (response.data.error) return console.log(response.data.error.message);
 
-        if (response.status === 201) {
-          return console.log('Artist added to DB:', response);
-        } else {
-          return console.log(response.data);
-        }
+        return console.log(response.data);
       })
       .catch((err) => {
-        return console.log(err.response.data);
+        return err.response ? console.log(err.response.data) : console.log(err);
       });
   }
 
