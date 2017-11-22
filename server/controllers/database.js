@@ -1,6 +1,6 @@
 const connPool = require('../db_connect');
 const dbQueries = require('../db_queries');
-const parallel = require('../helpers/parallel');
+const { parallel } = require('async');
 
 const dbController = module.exports = {};
 
@@ -15,13 +15,6 @@ dbController.addArtist = (req, res) => {
 
 // POST DB-ALBUMS - ADD NEW ALBUM TO DB
 dbController.addAlbum = (req, res) => {
-	const addAlbum = (callback) => {
-		dbQueries.addAlbum(connPool, req.body, (err, result) => {
-			if (err) return callback(err);
-			return callback(null, result);
-		});
-	};
-
 	const addAlbumArtist = (callback) => {
 		dbQueries.addAlbumArtist(connPool, req.body, (err, result) => {
 			if (err) return callback(err);
@@ -29,9 +22,16 @@ dbController.addAlbum = (req, res) => {
 		});
 	};
 
+	const addAlbum = (callback) => {
+		dbQueries.addAlbum(connPool, req.body, (err, result) => {
+			if (err) return callback(err);
+			return callback(null, result);
+		});
+	};
+
 	parallel([
-		addAlbum,
-		addAlbumArtist
+		addAlbumArtist,
+		addAlbum
 	], (err, result) => {
 		if (err) return res.status(500).send(`Error adding album to DB: ${err}`);
 

@@ -41,7 +41,6 @@ class AlbumList extends Component {
       const imgUrl = album.images[1] ? album.images[1].url : null;
 
 			const added = this.state.dbAlbums.indexOf(album.id) !== -1;
-			console.log(added);
 
       return <AlbumTile key={album.id} {...album} albumArt={imgUrl} added={added} />;
     });
