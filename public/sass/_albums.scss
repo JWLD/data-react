@@ -2,8 +2,6 @@ $tilePadding: 15px;
 $sAlbumImg: 250px - ($tilePadding * 2);
 
 .album-sctn {
-  margin: $sHalf;
-
   ul {
     list-style: none;
     flex-direction: row;
@@ -84,7 +82,7 @@ $sAlbumImg: 250px - ($tilePadding * 2);
     flex-grow: 1;
     flex-basis: 0;
     border-radius: 2px;
-    background-color: gray;
+    background-color: $cMain;
     color: $cWhite;
     font: bold 20px $fMain;
 
@@ -93,7 +91,7 @@ $sAlbumImg: 250px - ($tilePadding * 2);
     }
 
     &:hover {
-      color: $cHover;
+      color: $cLighter;
     }
   }
 }

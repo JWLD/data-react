@@ -35,6 +35,12 @@ button:focus {
   display: none;
 }
 
+.inactive {
+  pointer-events: none;
+  cursor: default;
+  color: #444;
+}
+
 // GENERAL
 
 .app {

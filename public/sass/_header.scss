@@ -3,12 +3,12 @@
   width: 100vw;
   height: $headerHeight;
   background-color: $cLight;
-  border-bottom: 5px solid white;
+  border-bottom: 5px solid $cWhite;
 }
 
 .header-bar__title {
   font: bold 50px $fMain;
-  color: white;
+  color: $cWhite;
 }
 
 .header-bar__spotify-btn {
@@ -17,6 +17,6 @@
   right: 0;
   height: $headerHeight - 5px;
   margin-right: 18px;
-  color: white;
+  color: $cWhite;
   font-size: 60px;
 }

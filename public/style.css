@@ -23,6 +23,11 @@ button:focus {
 .hide {
   display: none; }
 
+.inactive {
+  pointer-events: none;
+  cursor: default;
+  color: #444; }
+
 .app {
   flex-direction: column; }
 
@@ -40,11 +45,11 @@ section {
   width: 100vw;
   height: 100px;
   background-color: #373e48;
-  border-bottom: 5px solid white; }
+  border-bottom: 5px solid #eee; }
 
 .header-bar__title {
   font: bold 50px Helvetica;
-  color: white; }
+  color: #eee; }
 
 .header-bar__spotify-btn {
   position: absolute;
@@ -52,7 +57,7 @@ section {
   right: 0;
   height: 95px;
   margin-right: 18px;
-  color: white;
+  color: #eee;
   font-size: 60px; }
 
 .artist-sctn input {
@@ -99,12 +104,10 @@ section {
   font: 15px Helvetica;
   color: #eee; }
 
-.album-sctn {
-  margin: 15px; }
-  .album-sctn ul {
-    list-style: none;
-    flex-direction: row;
-    flex-wrap: wrap; }
+.album-sctn ul {
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap; }
 
 .album {
   margin: 15px;
@@ -164,10 +167,30 @@ section {
     flex-grow: 1;
     flex-basis: 0;
     border-radius: 2px;
-    background-color: gray;
+    background-color: #21252b;
     color: #eee;
     font: bold 20px Helvetica; }
     .album__button-wrap button:first-child {
       margin-right: 15px; }
     .album__button-wrap button:hover {
-      color: goldenrod; }
+      color: #434b56; }
+
+.album-results-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px; }
+  .album-results-nav span {
+    width: 95px;
+    margin: 0 40px;
+    font: 30px Helvetica;
+    color: #eee; }
+  .album-results-nav svg {
+    color: #21252b;
+    background-color: #373e48;
+    border-radius: 3px;
+    height: 60px;
+    width: 80px;
+    padding: 5px; }
+    .album-results-nav svg:hover {
+      background-color: #434b56; }
