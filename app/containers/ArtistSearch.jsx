@@ -29,8 +29,6 @@ class ArtistSearch extends Component {
 
       Axios.get(`http://localhost:3000/artists?q=${this.state.searchTerm}`, { withCredentials: true })
         .then((response) => {
-          if (response.data.error) return console.log(response.data.error.message);
-
           this.setState({ artists: response.data.artists.items });
         })
         .catch((err) => {
@@ -47,8 +45,6 @@ class ArtistSearch extends Component {
 
     Axios.post('http://localhost:3000/db-artists', { id: artist.id, name: artist.name, img: imageUrl })
       .then((response) => {
-        if (response.data.error) return console.log(response.data.error.message);
-
         return console.log(response.data);
       })
       .catch((err) => {

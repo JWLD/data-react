@@ -21,9 +21,15 @@ spotifyController.artists = (req, res) => {
 
 // GET ALBUMS - SEARCH SPOTIFY FOR ALBUMS
 spotifyController.albums = (req, res) => {
+	const limit = 50;
+
+	const url = req.query.page !== 'null'
+		? req.query.page
+		: `https://api.spotify.com/v1/artists/${req.query.artistId}/albums?limit=${limit}`;
+
   const options = {
     method: 'GET',
-    url: `https://api.spotify.com/v1/artists/${req.query.artistId}/albums?limit=50`,
+    url,
     headers: {
       Authorization: `Bearer ${res.locals.token}`
     }
@@ -34,7 +40,7 @@ spotifyController.albums = (req, res) => {
 
     return res.send({
 			dbAlbums: res.locals.albumIds, // ids of albums already in DB
-			allAlbums: body
+			spAlbums: body
 		});
   });
 };

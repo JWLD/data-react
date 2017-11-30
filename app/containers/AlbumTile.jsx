@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import FaDownload from 'react-icons/lib/fa/download';
 import FaExternalLinkSquare from 'react-icons/lib/fa/external-link-square';
+import FaPlus from 'react-icons/lib/fa/plus';
+import FaMinus from 'react-icons/lib/fa/minus'
 
 import titleData from '../data/titlePhrases';
 
@@ -19,6 +21,7 @@ class AlbumTile extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.getAlbumDate = this.getAlbumDate.bind(this);
     this.addAlbum = this.addAlbum.bind(this);
+		this.deleteAlbum = this.deleteAlbum.bind(this);
   }
 
   trimTitles(title) {
@@ -52,16 +55,26 @@ class AlbumTile extends Component {
 
     Axios.post('http://localhost:3000/db-albums', data)
       .then((response) => {
-        if (response.data.error) return console.log(response.data.error.message);
-
 				this.setState({ added: true });
-				
+
         return console.log(response.data);
       })
       .catch((err) => {
         return err.response ? console.log(err.response.data) : console.log(err);
       });
   }
+
+	deleteAlbum() {
+		Axios.delete('http://localhost:3000/db-albums', { params: { album_id: this.props.id } })
+			.then((response) => {
+				this.setState({ added: false });
+
+				return console.log(response.data);
+			})
+			.catch((err) => {
+				return err.response ? console.log(err.response.data) : console.log(err);
+			});
+	}
 
   render () {
     let yearButton;
@@ -75,6 +88,11 @@ class AlbumTile extends Component {
 
     const imgStyle = { backgroundImage: `url(${this.props.albumArt})` };
 		const tileClass = this.state.added ? 'album added' : 'album';
+		const plusClass = !this.state.year ? 'inactive' : '';
+
+		const dbButton = this.state.added
+			? <FaMinus onClick={this.deleteAlbum} />
+			: <FaPlus className={plusClass} onClick={this.addAlbum} />;
 
     return (
       <li>
@@ -88,12 +106,11 @@ class AlbumTile extends Component {
           <div className="album__input-wrap">
             <input name="title" onChange={this.onInputChange} value={this.state.title} />
             <div className="album__year-wrap">
-              <input name="year" onChange={this.onInputChange} value={this.state.year} />
+              <input name="year" onChange={this.onInputChange} value={this.state.year} placeholder="Year" />
               {yearButton}
             </div>
             <div className="album__button-wrap">
-              <button onClick={this.addAlbum}>ADD</button>
-              <button>-</button>
+							{dbButton}
             </div>
           </div>
         </div>

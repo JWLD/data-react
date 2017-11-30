@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 
+import AlbumResultsNav from '../components/AlbumResultsNav';
 import AlbumTile from './AlbumTile';
 
 class AlbumList extends Component {
@@ -11,19 +12,31 @@ class AlbumList extends Component {
     this.state = {
       currentArtist: '',
       albums: [],
-			dbAlbums: []
+			dbAlbums: [],
+			pageData: {}
     };
+
+		this.getAlbums = this.getAlbums.bind(this);
   }
 
-  getAlbums() {
-    Axios.get(`http://localhost:3000/albums?artistId=${this.props.artist}`, { withCredentials: true })
+  getAlbums(url) {
+    Axios.get(`http://localhost:3000/albums?artistId=${this.props.artist}&page=${encodeURIComponent(url)}`, { withCredentials: true })
       .then((response) => {
-        if (response.data.error) return console.log(response.data.error.message);
+				const spotifyData = JSON.parse(response.data.spAlbums);
+
+				const pageData = {
+					next: spotifyData.next,
+					prev: spotifyData.previous,
+					total: spotifyData.total,
+					limit: spotifyData.limit,
+					offset: spotifyData.offset
+				};
 
         this.setState({
           currentArtist: this.props.artist,
-          albums: JSON.parse(response.data.allAlbums).items,
-					dbAlbums: response.data.dbAlbums
+          albums: spotifyData.items,
+					dbAlbums: response.data.dbAlbums,
+					pageData
         });
       })
       .catch((err) => {
@@ -34,7 +47,7 @@ class AlbumList extends Component {
   render() {
     // only get albums if user has clicked on a new artist
     if (this.props.artist && this.props.artist !== this.state.currentArtist) {
-      this.getAlbums();
+      this.getAlbums(null);
     }
 
     const albums = this.state.albums.map((album) => {
@@ -47,6 +60,10 @@ class AlbumList extends Component {
 
     return (
       <section className="album-sctn">
+				<AlbumResultsNav
+					getAlbums={this.getAlbums}
+					data={this.state.pageData}
+				/>
         <ul>{albums}</ul>
       </section>
     )

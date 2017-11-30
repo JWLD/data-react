@@ -36,6 +36,22 @@ dbQueries.checkAlbum = (connPool, id, callback) => {
 	);
 };
 
+dbQueries.getAlbumIds = (connPool, artistId, callback) => {
+	connPool.query(
+		'SELECT spotify_id FROM albums WHERE spotify_id IN (SELECT album_id FROM albums_artists WHERE artist_id = $1)',
+		[artistId],
+		callback
+	);
+};
+
+dbQueries.deleteAlbum = (connPool, albumId, callback) => {
+	connPool.query(
+		'DELETE FROM albums WHERE spotify_id = $1',
+		[albumId],
+		callback
+	)
+};
+
 // ALBUMS-ARTISTS
 
 dbQueries.addAlbumArtist = (connPool, data, callback) => {
@@ -54,12 +70,12 @@ dbQueries.checkAlbumArtist = (connPool, data, callback) => {
 	);
 };
 
-dbQueries.getAlbumIds = (connPool, artistId, callback) => {
+dbQueries.deleteAlbumArtist = (connPool, albumId, callback) => {
 	connPool.query(
-		'SELECT spotify_id FROM albums WHERE spotify_id IN (SELECT album_id FROM albums_artists WHERE artist_id = $1)',
-		[artistId],
+		'DELETE FROM albums_artists WHERE album_id = $1',
+		[albumId],
 		callback
-	);
+	)
 };
 
 module.exports = dbQueries;
