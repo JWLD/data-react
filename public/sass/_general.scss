@@ -38,7 +38,7 @@ button:focus {
 .inactive {
   pointer-events: none;
   cursor: default;
-  color: #444;
+  color: #444 !important;
 }
 
 // GENERAL

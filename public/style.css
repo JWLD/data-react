@@ -26,7 +26,7 @@ button:focus {
 .inactive {
   pointer-events: none;
   cursor: default;
-  color: #444; }
+  color: #444 !important; }
 
 .app {
   flex-direction: column; }
@@ -67,7 +67,8 @@ section {
   padding: 12px;
   font: 20px Helvetica;
   margin-bottom: 30px;
-  background-color: #eee; }
+  background-color: #eee;
+  text-transform: capitalize; }
 
 .artist-sctn__box-wrap {
   width: 810px;
@@ -160,20 +161,16 @@ section {
 
 .album__button-wrap {
   width: 100%;
-  justify-content: space-between; }
-  .album__button-wrap button {
-    height: 40px;
-    padding-top: 2px;
-    flex-grow: 1;
-    flex-basis: 0;
-    border-radius: 2px;
+  flex-grow: 1; }
+  .album__button-wrap svg {
+    width: 75px;
+    height: 50px;
+    padding: 3px 25px 0 25px;
+    border-radius: 4px;
     background-color: #21252b;
-    color: #eee;
-    font: bold 20px Helvetica; }
-    .album__button-wrap button:first-child {
-      margin-right: 15px; }
-    .album__button-wrap button:hover {
-      color: #434b56; }
+    color: #eee; }
+    .album__button-wrap svg:hover {
+      color: goldenrod; }
 
 .album-results-nav {
   display: flex;

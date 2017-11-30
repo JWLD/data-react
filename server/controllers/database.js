@@ -38,3 +38,29 @@ dbController.addAlbum = (req, res) => {
 		return res.status(201).send('New album added to DB');
 	});
 };
+
+// DELETE DB-ALBUMS - DELETE ALBUM FROM DB
+dbController.deleteAlbum = (req, res) => {
+	const deleteAlbumArtist = (callback) => {
+		dbQueries.deleteAlbumArtist(connPool, req.query.album_id, (err, result) => {
+			if (err) return callback(err);
+			return callback(null, result);
+		});
+	};
+
+	const deleteAlbum = (callback) => {
+		dbQueries.deleteAlbum(connPool, req.query.album_id, (err, result) => {
+			if (err) return callback(err);
+			return callback(null, result);
+		});
+	};
+
+	parallel([
+		deleteAlbumArtist,
+		deleteAlbum
+	], (err, result) => {
+		if (err) return res.status(500).send(`Error deleting album from DB: ${err}`);
+
+		return res.status(201).send('Album deleted from DB');
+	});
+};

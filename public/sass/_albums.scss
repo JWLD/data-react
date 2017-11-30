@@ -74,24 +74,18 @@ $sAlbumImg: 250px - ($tilePadding * 2);
 
 .album__button-wrap {
   width: 100%;
-  justify-content: space-between;
+	flex-grow: 1;
 
-  button {
-    height: 40px;
-    padding-top: 2px;
-    flex-grow: 1;
-    flex-basis: 0;
-    border-radius: 2px;
+  svg {
+		width: 75px;
+    height: 50px;
+		padding: 3px 25px 0 25px;
+    border-radius: 4px;
     background-color: $cMain;
     color: $cWhite;
-    font: bold 20px $fMain;
-
-    &:first-child {
-      margin-right: $tilePadding;
-    }
 
     &:hover {
-      color: $cLighter;
+      color: $cHover;
     }
   }
 }
