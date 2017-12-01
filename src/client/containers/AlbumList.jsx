@@ -20,7 +20,7 @@ class AlbumList extends Component {
   }
 
   getAlbums(url) {
-    Axios.get(`http://localhost:3000/albums?artistId=${this.props.artist}&page=${encodeURIComponent(url)}`, { withCredentials: true })
+    Axios.get(`/api/albums?artistId=${this.props.artist}&page=${encodeURIComponent(url)}`, { withCredentials: true })
       .then((response) => {
 				const spotifyData = JSON.parse(response.data.spAlbums);
 

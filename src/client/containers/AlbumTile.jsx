@@ -35,7 +35,7 @@ class AlbumTile extends Component {
   }
 
   getAlbumDate() {
-    Axios.get(`http://localhost:3000/album-date?albumId=${this.props.id}`, { withCredentials: true })
+    Axios.get(`/api/album-date?albumId=${this.props.id}`, { withCredentials: true })
       .then(response => {
         this.setState({ year: response.data });
       })
@@ -53,7 +53,7 @@ class AlbumTile extends Component {
       artist_id: this.props.artist
     }
 
-    Axios.post('http://localhost:3000/db-albums', data)
+    Axios.post('/api/db-albums', data)
       .then((response) => {
 				this.setState({ added: true });
 
@@ -65,7 +65,7 @@ class AlbumTile extends Component {
   }
 
 	deleteAlbum() {
-		Axios.delete('http://localhost:3000/db-albums', { params: { album_id: this.props.id } })
+		Axios.delete('/api/db-albums', { params: { album_id: this.props.id } })
 			.then((response) => {
 				this.setState({ added: false });
 
