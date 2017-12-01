@@ -9,7 +9,11 @@ module.exports = {
   devServer: {
     contentBase: './public',
     historyApiFallback: true,
-    port: 5000
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000'
+			}
+		}
   },
   devtool: 'cheap-eval-source-map',
   resolve: {
