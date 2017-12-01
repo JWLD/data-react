@@ -88,7 +88,7 @@ class AlbumTile extends Component {
 
     const imgStyle = { backgroundImage: `url(${this.props.albumArt})` };
 		const tileClass = this.state.added ? 'album added' : 'album';
-		const plusClass = !this.state.year ? 'inactive' : '';
+		const plusClass = !this.state.year ? 'inactive tile' : '';
 
 		const dbButton = this.state.added
 			? <FaMinus onClick={this.deleteAlbum} />
