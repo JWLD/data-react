@@ -9,7 +9,7 @@ class ArtistSearch extends Component {
     super(props);
 
     this.state = {
-      searchTerm: 'Hans Zimmer',
+      searchTerm: '',
       artists: [],
       selectedArtist: null
     };
@@ -27,7 +27,7 @@ class ArtistSearch extends Component {
     if (e.keyCode === 13) { // enter key
       e.preventDefault();
 
-      Axios.get(`http://localhost:3000/artists?q=${this.state.searchTerm}`, { withCredentials: true })
+      Axios.get(`/api/artists?q=${this.state.searchTerm}`)
         .then((response) => {
           this.setState({ artists: response.data.artists.items });
         })
@@ -43,7 +43,7 @@ class ArtistSearch extends Component {
     // attempt to add artist to DB
     const imageUrl = artist.images[1] ? artist.images[1].url : null;
 
-    Axios.post('http://localhost:3000/db-artists', { id: artist.id, name: artist.name, img: imageUrl })
+    Axios.post('/api/db-artists', { id: artist.id, name: artist.name, img: imageUrl })
       .then((response) => {
         return console.log(response.data);
       })
@@ -87,7 +87,7 @@ class ArtistSearch extends Component {
           onKeyDown={this.onKeyDown}
           onChange={this.onInputChange}
           value={this.state.searchTerm}
-          placeholder="Search Spotify for artist"
+          placeholder="Search"
           autoComplete="off"
         />
 

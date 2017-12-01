@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './app/App.jsx',
+  entry: './src/client/App.jsx',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
@@ -9,7 +9,11 @@ module.exports = {
   devServer: {
     contentBase: './public',
     historyApiFallback: true,
-    port: 5000
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000'
+			}
+		}
   },
   devtool: 'cheap-eval-source-map',
   resolve: {

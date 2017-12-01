@@ -4,16 +4,12 @@
   "description": "Easily view a composer's main body of work",
   "main": "server/start.js",
   "scripts": {
-    "start": "npm run server & webpack --watch",
-    "dev": "npm run sass & npm run server & webpack-dev-server",
-    "server": "nodemon --ignore app/ server/start.js",
-    "sass": "./node_modules/.bin/node-sass ./public/sass/main.scss ./public/style.css"
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "react"
-    ]
+    "start": "node src/server/start.js",
+    "dev": "npm run sass & npm run sass:watch & webpack-dev-server & npm run server",
+		"build": "webpack",
+		"sass": "./node_modules/.bin/node-sass ./public/sass/main.scss ./public/style.css",
+		"sass:watch": "./node_modules/.bin/node-sass --watch ./public/sass/main.scss ./public/style.css",
+    "server": "nodemon --ignore ./src/client/ ./src/server/start.js"
   },
   "repository": {
     "type": "git",

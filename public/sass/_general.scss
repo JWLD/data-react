@@ -38,7 +38,10 @@ button:focus {
 .inactive {
   pointer-events: none;
   cursor: default;
-  color: #444 !important;
+
+	&.tile {
+		color: #444 !important;
+	}
 }
 
 // GENERAL
